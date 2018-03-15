@@ -13,7 +13,7 @@ Before you start, make sure the following libraries and plugins are properly ins
 
 [gRPC-go](https://github.com/grpc/grpc-go)
 
-For linux user, you may need to build the php extension from source, for Mac user, you can use [brew](https://github.com/Homebrew/brew) to install it, e.g. if you have installed php 7.1 by brew, you can use the following command to install the gRPC extension:
+*Tips: For Linux user, you may need to build the php extension from source, for Mac user, you can use [brew](https://github.com/Homebrew/brew) to install it, e.g. if you have installed php 7.1 by brew, you can use the following command to install the gRPC extension:*
 
  ```
 brew install php71-grpc
@@ -21,7 +21,7 @@ brew install php71-grpc
 
 ## Generate source files
 
-Just run `./generate.sh` and you will generate the source files of Golang and PHP.
+Just run `./generate.sh` and it will generate the source files for Golang and PHP.
 
 ## Server
 
@@ -42,5 +42,5 @@ composer install
 php helloworld_client.php [name]
 ```
 
-Tips: you can view the [gRPC PHP Client Library](https://github.com/grpc/grpc-php) which supports Composer installation.
+*Tips: you can view the [gRPC PHP Client Library](https://github.com/grpc/grpc-php) which supports Composer installation.*
 
