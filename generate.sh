@@ -31,9 +31,11 @@ rm -rf $client_dir/*
 
 echo -e "\n\033[0;32mGenerating codes...\033[39;49;0m\n"
 
+echo -e "generating golang stubs..."
+$proto_bin -I $protos_dir --go_out=plugins=grpc:$server_dir $protos_dir/*.proto
+
 for file in $protos_dir/*.proto; do
-    echo -en "from: $file"
-    $proto_bin -I $protos_dir --go_out=plugins=grpc:$server_dir $file
+    echo -en "generating php stubs from: $file"
     $proto_bin -I $protos_dir --php_out=$client_dir --grpc_out=$client_dir --plugin=protoc-gen-grpc=$grpc_php_plugin $file
     echo -en "\t\033[0;32m[DONE]\033[39;49;0m\n"
 done

@@ -40,6 +40,7 @@ After you launch the server, you can try the php client:
 cd clients/
 composer install
 php helloworld_client.php [name]
+php address_book_client.php
 ```
 
 *Tips: you can view the [gRPC PHP Client Library](https://github.com/grpc/grpc-php) which supports Composer installation.*

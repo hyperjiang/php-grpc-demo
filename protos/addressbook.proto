@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option go_package = "pb";
+
+package addressbook;
+
+import "google/protobuf/timestamp.proto";
+
+message Person {
+  int32 id = 1; // Unique ID number for this person.
+  string name = 2;
+  string email = 3;
+
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+
+  message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+  }
+
+  repeated PhoneNumber phones = 4;
+
+  google.protobuf.Timestamp last_updated = 5;
+}
+
+message AddressBook {
+  repeated Person people = 1;
+}
+
+// The addressbook service definition.
+service AddressBookService {
+  // Add a person to address book
+  rpc AddPerson (AddPersonRequest) returns (AddPersonResponse) {}
+
+  // Get the address book
+  rpc GetAddressBook (GetAddressBookRequest) returns (GetAddressBookResponse) {}
+}
+
+message AddPersonRequest {
+  Person person = 1;
+}
+
+message AddPersonResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetAddressBookRequest {
+}
+
+message GetAddressBookResponse {
+  AddressBook address_book = 1;
+}
